@@ -1,0 +1,3038 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass cinc
+\begin_preamble
+% -*- Mode:TeX -*-
+% LaTeX template for CinC manuscripts			v 0.9  29 July 2004
+%
+% To use this template successfully, you must have downloaded and unpacked:
+%       http://cinc.mit.edu/authkit/latex.tar.gz
+% or the same package in zip format:
+%       http://cinc.mit.edu/authkit/latex.zip
+% See the README included in this package for instructions.
+%
+% If you have questions, comments or suggestions about this file, please
+% send me a note!  George Moody (george@mit.edu)
+%
+
+
+   % caracteres especiales (acentos, eñes)
+     % varias definiciones para el español
+           % inserción de graficos
+
+\let\ifpdf\relax
+
+\usepackage[unicode=true,
+ bookmarks=false,
+ breaklinks=true,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
+
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\end_preamble
+\options twocolumn
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-1
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\pdf_author "Augusto Santini"
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "unicode=true, bookmarks=false,pdfborder={0 0 0},backref=false"
+\papersize default
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3.17cm
+\topmargin 2.54cm
+\rightmargin 3.17cm
+\bottommargin 2.54cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Versatile Detector of Pseudo Periodic Patterns
+\end_layout
+
+\begin_layout Author
+Augusto Santini
+\begin_inset Formula $^{1}$
+\end_inset
+
+, Emiliano Diez
+\begin_inset Formula $^{2}$
+\end_inset
+
+, Mariano Llamedo
+\begin_inset Formula $^{1}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+mbox{}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $^{1}$
+\end_inset
+
+GIBIO, National Technological University, Buenos Aires, Argentina
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $^{2}$
+\end_inset
+
+Institute of Physiology, Medical School, National University of Cuyo, Mendoza,
+ Argentina
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+This study aimed to develop a detector with few physiologically-meaningful
+ parameters, that could be capable of detecting pseudo periodic patterns.
+ The algorithm is based in a signal detection based on a matched filter,
+ and a threshold calculation based on robust stadistics.
+ The evaluation of the detector was performed under a corpus consisting
+ in two sets.
+ One set of human ECGs, and one set of rodent pseudo ECGs.
+ The evaluation was performed with respect to the gold standard annotations,
+ and was calculated in terms of sensitivity (S) and positive predictive
+ value (P).
+ For the human ECG set of recordings, the detector had 100 S and 99.9 P,
+ while for the rodent pseudo ECG set of recordings the results where 97.1
+ S and 79.1 P.
+ Both sets results are median values.
+ The results obtained under the rodent set where compared to those obtained
+ with another two detectors, where our detector obtained the best results.
+ The algorithm achieved promising results, in a broad set of ECG recordings
+ of very different nature, with the additional capability of further adaptation
+ provided by expert assistance.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+The automatic analysis of pseudo periodic signals, such as those of cardiovascul
+ar origin, often relies on the detection of a synchronization pattern in
+ order to perform a reliable estimation through averaging.
+ In certain applications such as fetal ECG analysis or transmembrane action
+ potential measurement, the automatic synchronization task can be a challenging
+ problem by itself.
+ The detections of heartbeats in the ECG can also be a challenging task,
+ specially in those long-term and/or noisy recordings, with broad and sudden
+ changes in rhythm and morphology.
+ The success commonly relies on the 
+\emph on
+a priori
+\emph default
+ knowledge about the timing and morphologic description about the pattern
+ to detect, therefore limiting the generality.
+ 
+\end_layout
+
+\begin_layout Standard
+In the past two decades several cardiovascular pattern detectors were developed,
+ e.g.
+ ECG heartbeat detectors, blood pressure pulse detectors, etc.
+ Some of them adapted for noninvasive signals such as the ECG or the plethysmogr
+aphic signal, but also for other invasive signals, such as the electrogram
+ and blood pressure recordings, among others.
+ Several of the developed detectors are freely available on internet 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PhysioNet"
+literal "true"
+
+\end_inset
+
+, and were described in the literature 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PLbook,elgendiQRSdreview"
+literal "true"
+
+\end_inset
+
+.
+ All the reviewed algorithms are commonly adapted to an specific type of
+ pattern/signal, making difficult or impossible the possibility of changing
+ the target pattern and/or signal.
+ As a consequence, these algorithms have a limited adaptation capacity to
+ real life applications, where noise interference and large morphological
+ changes in the signal/patterns often occur.
+ 
+\end_layout
+
+\begin_layout Standard
+The objective of this work is to develop and analyze an algorithm to detect
+ impulsive and pseudo periodic patterns in cardiovascular signals given
+ a small set of timing and morphological constraints.
+ In addition, it must be capable of both automatic and assisted operation,
+ i.e.
+ the algorithm must provide a simple interface for an eventual expert.
+\end_layout
+
+\begin_layout Section
+Material and methods
+\end_layout
+
+\begin_layout Standard
+The performance of the algorithm was evaluated in a data corpus consisting
+ in two evaluation sets.
+ The first evaluation set consists in 178 human ECG recordings from 12 publicly
+ available databases 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PhysioNet"
+literal "false"
+
+\end_inset
+
+.
+ Details of the human set are shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Databases"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The second evaluation set consists in 17 pseudo ECG recordings, performed
+ in explanted rodent hearts put through hipokalemia 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CitaRata"
+literal "false"
+
+\end_inset
+
+.
+ The recordings length were between 20 and 50 minutes, accounting for a
+ total time of 10 hours aproximately.
+ For all ECG recordings, only lead II or the first available was selected
+ for experimentation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Databases"
+
+\end_inset
+
+Human evaluation set composition.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+resizebox{
+\backslash
+columnwidth}{!}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="14" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Group
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#Rec
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Leads
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sinus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nsrdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1 day
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+fantasiadb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2 h
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2-3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Arrhytmia
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mitdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30 m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+svdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30 m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+incartdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30 m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ST-T changes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+edb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2 h
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ltstdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21-24 h
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2-3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Stress
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thew
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15 m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+stdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10-40 m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Long Term
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ltdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14-22 h
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sddb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23 h
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ltafdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1 day
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Total
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+~92 days
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+178
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The algorithm proposed in this work is mainly based on the analysis of a
+ detection signal calculated as 
+\begin_inset Formula 
+\begin{equation}
+a(\theta)=\sum_{i=\theta}^{\theta+L-1}s(i).p(\theta-i),\,\,\,\theta=0,1\cdots,N\label{eq:xcorr}
+\end{equation}
+
+\end_inset
+
+ where 
+\begin_inset Formula $p(n)$
+\end_inset
+
+ (
+\begin_inset Formula $\mathbf{p}$
+\end_inset
+
+ hereafter) is a pattern of length 
+\begin_inset Formula $N$
+\end_inset
+
+, and 
+\begin_inset Formula $\mathbf{s}$
+\end_inset
+
+ the signal under analysis, of 
+\begin_inset Formula $N$
+\end_inset
+
+ samples length.
+ This method is also known as the matched filter 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PLbook"
+literal "true"
+
+\end_inset
+
+, where 
+\begin_inset Formula $\mathbf{p}$
+\end_inset
+
+ is the time reversed version of the pattern to detect.
+ The matched filter is the maximum likelihood delay estimator (
+\begin_inset Formula $\theta$
+\end_inset
+
+) of a pattern 
+\begin_inset Formula $\mathbf{p}$
+\end_inset
+
+ immerse in a noisy signal 
+\begin_inset Formula $\mathbf{s}$
+\end_inset
+
+.
+ One of its limitations can be that 
+\begin_inset Formula $\mathbf{p}$
+\end_inset
+
+ must be 
+\emph on
+a priori
+\emph default
+ known, which is an important drawback at the moment of designing and automatic
+ algorithm.
+ In this work we proposed to overcome this limitation with the use of a
+ two step algorithm.
+ 1) First we perform an approximation step, which consists of generating
+ a generic 
+\begin_inset Formula $\mathbf{p}$
+\end_inset
+
+ to perform an approximate detection.
+ 2) The refinement step consists on repeating step 1), but with a set of
+ patterns 
+\begin_inset Formula $\mathbf{P}$
+\end_inset
+
+ estimated from the results of the first step, as described below.
+ The scheme of Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:block_diagram"
+
+\end_inset
+
+ attempt to ease the explanation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Block_diagram.pdf
+	width 200col%
+	height 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:block_diagram"
+
+\end_inset
+
+Block diagram of the proposed algorithm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first part of the approximation step 1) consists in calculating the
+ detection signal, 
+\begin_inset Formula $a(n)$
+\end_inset
+
+, using eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:block_diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, with a generic impulsive pattern calculated as 
+\begin_inset Formula 
+\begin{eqnarray}
+p(n) & = & g(n)·\frac{\partial}{\partial n}·g(n),\label{eq:generic_pattern}\\
+g(n) & = & e^{-\frac{n\text{²}}{2\sigma\text{²}}}\,,\,\sigma=\frac{N-1}{5}.\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+Note that the generic 
+\begin_inset Formula $p(n)$
+\end_inset
+
+ is the derivative of a Gaussian pattern with a user-defined width 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ The derivative was approximated by finite differences of the sequence 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ The detection signal 
+\begin_inset Formula $a$
+\end_inset
+
+ is then smoothed with an averaging low-pass FIR filter of integer length
+ 
+\begin_inset Formula $M=1.2*N$
+\end_inset
+
+, obtaining 
+\begin_inset Formula $a_{s}(n)$
+\end_inset
+
+.
+ In the following block, all the maxima extreme values of 
+\begin_inset Formula $a_{s}$
+\end_inset
+
+ above a threshold 
+\begin_inset Formula $t_{a}=P_{30}\{a_{s}\}$
+\end_inset
+
+, are located and stored in 
+\begin_inset Formula 
+\[
+\mathbf{b}=\underset{n}{\mathrm{argmax}}\left\{ a_{s}(n)\geq t_{a}\right\} .
+\]
+
+\end_inset
+
+The value of 
+\begin_inset Formula $t_{a}$
+\end_inset
+
+ was calculated as the 30
+\emph on
+th.
+ 
+\emph default
+percentile of 
+\begin_inset Formula $a_{s}$
+\end_inset
+
+, and was empirically adopted in order to sample the 
+\emph on
+noise floor
+\emph default
+.
+ Another restriction required for the values of 
+\begin_inset Formula $\mathbf{b}$
+\end_inset
+
+, is that the occurrence of two subsequent maxima must be greater or equal
+ than a user-defined parameter 
+\begin_inset Formula $m_{0}$
+\end_inset
+
+.
+ In case this condition is not satisfied, only the 
+\begin_inset Formula 
+\[
+b_{i}=\underset{n\in W}{\mathrm{max}}\left\{ a_{s}(n)\right\} 
+\]
+
+\end_inset
+
+ with 
+\begin_inset Formula 
+\[
+W=\left\{ j=1,\cdots,B\land\forall k:b_{k}\geq b_{j}\land b_{k}\leq\left(b_{j}+m_{0}\right)\right\} 
+\]
+
+\end_inset
+
+ are stored.
+ Once all the 
+\begin_inset Formula $B$
+\end_inset
+
+ relevant extreme values are stored in 
+\begin_inset Formula $\mathbf{b}$
+\end_inset
+
+, the algorithm continues with the calculation of 
+\begin_inset Formula $t_{b}$
+\end_inset
+
+, a second threshold used for the final impulse detection in signal 
+\begin_inset Formula $a_{s}$
+\end_inset
+
+.
+ The value of 
+\begin_inset Formula $t_{b}$
+\end_inset
+
+ is calculated from 
+\begin_inset Formula $\mathbf{h}_{b}$
+\end_inset
+
+, i.e.
+ the curve defined by the histogram values of 
+\begin_inset Formula $\mathbf{b}$
+\end_inset
+
+.
+ The histogram was calculated by counting occurrences over an 
+\emph on
+ad-hoc
+\emph default
+ equally spaced grid, with a grid step calculated as 
+\begin_inset Formula 
+\begin{eqnarray*}
+g_{s} & = & \mathrm{med}\left\{ \frac{\partial}{\partial i}p(i)\right\} \\
+p(i) & = & P_{q_{i}}\{a_{S}\},\,\:q\mathrm{=1,2\cdots,\,100}.
+\end{eqnarray*}
+
+\end_inset
+
+ Note that 
+\begin_inset Formula $g_{s}$
+\end_inset
+
+ is the median finite difference of an uniformly sampled percentile grid
+ over the values of 
+\begin_inset Formula $a_{s}$
+\end_inset
+
+.
+ The value of 
+\begin_inset Formula $g_{s}$
+\end_inset
+
+ favors an adequate representation of 
+\begin_inset Formula $\mathbf{h}_{b}$
+\end_inset
+
+, in order to perform the detection of the first minimum, 
+\begin_inset Formula $t_{b}$
+\end_inset
+
+, corresponding to the final detection threshold to use with the detection
+ signal 
+\begin_inset Formula $a_{s}$
+\end_inset
+
+.
+ The approximation step concludes after storing the 
+\begin_inset Formula $M_{0}$
+\end_inset
+
+ detections in 
+\begin_inset Formula 
+\[
+\mathbf{d}_{\textrm{0}}=\left(\textrm{n_{0},\,n_{1},\,\cdots,\,n_{M_{0}}}\right),
+\]
+
+\end_inset
+
+ being 
+\begin_inset Formula $n_{i}=\begin{array}{c}
+\mathrm{arg}\\
+n
+\end{array}\left\{ a_{s}(n)\geq t_{b}\right\} $
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The refinement step starts by seeking 
+\begin_inset Formula $Q$
+\end_inset
+
+ locations in 
+\begin_inset Formula $\mathbf{d}_{\textrm{0}}$
+\end_inset
+
+ corresponding to representative patterns based on a ranking criterion.
+ The criterion quantifies the stability of the 1) rhythm and 2) morphology
+ of the pattern.
+ The selected patterns should be those whose stability and frequency (or
+ rhythm) are more stable.
+ The quantification of the rhythm stability starts by calculating the instantane
+ous rhythm 
+\begin_inset Formula 
+\[
+\mathbf{r}_{\textrm{0}}=\left(\textrm{r_{0},\,r_{1},\,\cdots,\,r_{M_{0}-1}}\right),
+\]
+
+\end_inset
+
+using the locations in 
+\begin_inset Formula $\mathbf{d}_{\textrm{0}}$
+\end_inset
+
+ being 
+\begin_inset Formula $r_{i}=n_{i+1}-n_{i}$
+\end_inset
+
+.
+ Then, from 
+\begin_inset Formula $\mathbf{r}_{\textrm{0}}$
+\end_inset
+
+ an estimate of the instantaneous median rhythm 
+\begin_inset Formula $\mathbf{\tilde{r}}_{\textrm{0}}$
+\end_inset
+
+ was calculated where 
+\begin_inset Formula $\tilde{r}_{i}=\mathrm{med}\left\{ \mathbf{r}_{S}\right\} $
+\end_inset
+
+, being 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mathbf{r}_{S}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ the sequence of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+rhythm values included in a centered window 
+\begin_inset Formula $S$
+\end_inset
+
+ around the 
+\begin_inset Formula $i$
+\end_inset
+
+-th value.
+ With these two sequences, an scatter sequence 
+\begin_inset Formula $\mathbf{\tilde{s}}_{\textrm{0}}$
+\end_inset
+
+ was calculated, with elements 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\[
+\tilde{s}_{i}=\frac{(r_{i}-\tilde{r}_{i})}{\tilde{r}_{i}}.
+\]
+
+\end_inset
+
+ The value 
+\begin_inset Formula $\tilde{s}_{i}$
+\end_inset
+
+ represents the instantaneous relative change in rhythm.
+ Finally a two column matrix 
+\begin_inset Formula $\mathbf{T}_{j}$
+\end_inset
+
+ with the start-end of each stable segment is constructed.
+ An 
+\begin_inset Formula $\tilde{s}_{i}$
+\end_inset
+
+ element is considered stable if its value is less than the median of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mathbf{\tilde{s}}_{\textrm{0}}$
+\end_inset
+
+.
+ Then, an stable segment is defined as a sequence of adjacent 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+and stable 
+\begin_inset Formula $\tilde{s}_{i}$
+\end_inset
+
+, whose length is grater than a time 
+\begin_inset Formula $w_{s}$
+\end_inset
+
+.
+ The start and ending sample of all 
+\begin_inset Formula $L_{0}$
+\end_inset
+
+ segments that meet this condition are stored in 
+\begin_inset Formula $\mathbf{T}_{j}$
+\end_inset
+
+.
+ A first rhythm score 
+\begin_inset Formula $x_{j}^{r}$
+\end_inset
+
+ with 
+\begin_inset Formula $j=1,\,2,\,\cdots,\,L_{0}$
+\end_inset
+
+ is calculated for each row in 
+\begin_inset Formula $\mathbf{T}_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The morphology score 
+\begin_inset Formula $x_{j}^{m}$
+\end_inset
+
+ was also calculated for each of the 
+\begin_inset Formula $L_{0}$
+\end_inset
+
+ stable segments.
+ For each segment, a 
+\begin_inset Formula $D_{j}\times N$
+\end_inset
+
+ pattern matrix 
+\begin_inset Formula $\mathbf{U}_{j}$
+\end_inset
+
+ is constructed with all the 
+\begin_inset Formula $D_{j}$
+\end_inset
+
+ detected patterns of length 
+\begin_inset Formula $N$
+\end_inset
+
+ found.
+ The mean variance across the ensemble of patterns was used as morphology
+ score and was calculated as 
+\begin_inset Formula 
+\[
+x_{j}^{m}=\underset{x}{\mathrm{Mean}}[\underset{y}{\mathrm{Var}}(\mathbf{U}_{j})],
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $y$
+\end_inset
+
+ means the column (or ensemble) direction and 
+\begin_inset Formula $x$
+\end_inset
+
+ the row (or time) direction of matrix 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mathbf{U}_{j}$
+\end_inset
+
+.
+ With both scores the final score
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ was simply 
+\begin_inset Formula $x_{j}^{f}=$
+\end_inset
+
+
+\begin_inset Formula $x_{j}^{r}$
+\end_inset
+
++
+\begin_inset Formula $x_{j}^{m}$
+\end_inset
+
+, and was used to select the 
+\begin_inset Formula $Q$
+\end_inset
+
+ most promising rows in 
+\begin_inset Formula $\mathbf{T}_{j}$
+\end_inset
+
+ (stable segment).
+ A qualitative example can be observed in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:scores"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/rhythm.pdf
+	lyxscale 50
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:scores"
+
+\end_inset
+
+Rhythm evolution in a rodent recording.
+ Qualitative example of the rhythm and morphology scores in stable (1 and
+ 3) and unstable rythm segments.
+ The 3rd segment presents morphology unstability.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ The refinement step continues by calculating a representative pattern from
+ each segment 
+\begin_inset Formula 
+\[
+\mathbf{P}=(\mathbf{p}_{0},\,\mathbf{p}_{1},\,\cdots,\,\mathbf{p}_{Q}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Woody method was used to calculate 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mathbf{p}_{k}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ patterns from the 
+\begin_inset Formula $\mathbf{d}_{\textrm{0}}$
+\end_inset
+
+ detections 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Woody1969,PLbook"
+literal "false"
+
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $\mathbf{p}_{0}$
+\end_inset
+
+ is the generic pattern defined in equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:generic_pattern"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Once the pattern matrix 
+\begin_inset Formula $\mathbf{P}$
+\end_inset
+
+ is calculated, the algorithm concludes by repeating the approximation step
+ for each 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mathbf{p}_{k}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ and producing the corresponding detection vector 
+\begin_inset Formula $\mathbf{d}_{k}$
+\end_inset
+
+ for 
+\begin_inset Formula $k=1,\,2,\,\cdots,\,Q$
+\end_inset
+
+.
+ We only considered the detections from the first ranked pattern 
+\begin_inset Formula $\mathbf{d}_{1}$
+\end_inset
+
+ for the performance calculation presented in the next section.
+\end_layout
+
+\begin_layout Standard
+The experimentation was performed with the following user defined parameters:
+ for the human set 
+\begin_inset Formula $m_{o}$
+\end_inset
+
+=300ms, 
+\begin_inset Formula $N$
+\end_inset
+
+=60ms and 
+\begin_inset Formula $Q$
+\end_inset
+
+=2; for the rodent set 
+\begin_inset Formula $m_{o}$
+\end_inset
+
+=120ms, 
+\begin_inset Formula $N$
+\end_inset
+
+=20ms and 
+\begin_inset Formula $Q$
+\end_inset
+
+=2.
+\end_layout
+
+\begin_layout Standard
+The evaluation of the proposed algorithm was performed with respect to the
+ gold standard annotations included in each database.
+ It was calculated by means of the sensitivity and positive predictive value
+ for each recording.
+ The median results for each set of the corpus were calculated for a global
+ performance assessment.
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Standard
+The results obtained for both evaluation sets are summarized in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PerformanceFirstSetBadCases"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The worst cases for each database are shown, and the median result for
+ each set of the corpus.
+ In this work we also evaluated the 
+\emph on
+gqrs
+\emph default
+ detector 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PhysioNet"
+literal "false"
+
+\end_inset
+
+ and a threshold independent algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "thiRef"
+literal "false"
+
+\end_inset
+
+ under the rodent set.
+ Results where 
+\begin_inset Formula $S$
+\end_inset
+
+=72.1; 
+\begin_inset Formula $P$
+\end_inset
+
+=61.2 for the 
+\shape italic
+gqrs,
+\shape default
+ and 
+\begin_inset Formula $S$
+\end_inset
+
+=74.5; 
+\begin_inset Formula $P$
+\end_inset
+
+=87.4 for the threshold independent algorithm.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:PerformanceFirstSetBadCases"
+
+\end_inset
+
+Worst result for each database in the corpus.
+ Median values in percent.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+resizebox{
+\backslash
+columnwidth}{!}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="19" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Database
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Recording Name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+edb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+e0116
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+47.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+fantasia
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+f1o05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+29.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+INCART
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+I03
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+97.6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ltafdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+86.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+47.7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ltdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14172
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+98.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ltstdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+s30801
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+34.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+68.1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mitdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+201
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+97.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99.9
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nsrdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16272
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+98.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+92.7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sddb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+51
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+32.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+61.6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+stdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+312
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99.8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99.7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+svdb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+854
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99.3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+thew
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+95.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Human set
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+99.9
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rodendb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+77.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+57.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rodendb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+42.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Roden set
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+97.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+79.1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size footnotesize
+* 904_PR01_100204_11
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discussion and conclusions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/hist_final.pdf
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Case-of-failure"
+
+\end_inset
+
+Case of failure: Bad threshold calculation.
+ Example taken from recording 0116 from edb database.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this work we evaluated an algorithm for pseudo periodic patterns.
+ As explained above, the pattern description was made with two time parameters:
+ the pattern duration (
+\begin_inset Formula $N$
+\end_inset
+
+) and the minimum time between successive patterns (
+\begin_inset Formula $m_{0}$
+\end_inset
+
+).
+ This representation achieved promising results for the detection of QRS
+ complexes in human and rodent recordings.
+ The evaluation set includes recordings from 12 human ECG databases publicly
+ available 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PhysioNet,THEW"
+literal "true"
+
+\end_inset
+
+, as shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Databases"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Another set of 17 pseudo ECG recordings of explanted rodent hearts 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CitaRata"
+literal "false"
+
+\end_inset
+
+ was used to evaluate the generality of the pattern description.
+\end_layout
+
+\begin_layout Standard
+The results presented in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PerformanceFirstSetBadCases"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ show that the algorithm achieved a very good overall performance over a
+ wide set of recordings, obtaining a 
+\begin_inset Formula $S=100$
+\end_inset
+
+ and 
+\begin_inset Formula $P=99.9$
+\end_inset
+
+ in the whole human set.
+ In the same table, the worst cases were selected in order to visualize
+ where the algorithm requires further improvement, despite the fact that
+ the median performances are very promising.
+ We observed in those cases that the algorithm failed calculating the threshold
+ 
+\begin_inset Formula $t_{b}$
+\end_inset
+
+, as is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Case-of-failure"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, and where a proper threshold should be located.
+ During real-life use of the algorithm, these kind of errors are easy-to-correct
+, since the value of 
+\begin_inset Formula $t_{b}$
+\end_inset
+
+ could be corrected by expert assistance, if available.
+\end_layout
+
+\begin_layout Standard
+The results in the rodent set were not as good as in the human set, in Table
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PerformanceFirstSetBadCases"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ the median performance show an slight decrease in 
+\begin_inset Formula $S=97.1$
+\end_inset
+
+ and a more important decrease in 
+\begin_inset Formula $P=79.1$
+\end_inset
+
+.
+ This performance drop could be explained in first place by the severe changes
+ in morphology and rhythm observed in rodent recordings, as shown in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:scores"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Another explanation can be the experimental setup, i.e.
+ explanted hearts subject to severe changes in the potassium concentration
+ to induce ventricular fibrillation.
+ It is certainly a difficult scenario for any automatic algorithm, as said
+ above when comparing the performances with other public algorithms, where
+ the proposed algorithm is the best performing.
+ 
+\end_layout
+
+\begin_layout Standard
+The implementation of the proposed algorithm, with more detailed results
+ can be found in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "augusto_repo"
+literal "false"
+
+\end_inset
+
+ for comparison.
+ Despite the limitations described, the algorithm achieved promising results
+ with only two physiologically-meaningful parameters, in a broad set of
+ ECG recordings of very different nature, with the additional capability
+ of further adaptation provided by expert assistance.
+\end_layout
+
+\begin_layout Section*
+Acknowledgments
+\end_layout
+
+\begin_layout Standard
+This work was supported by projects ASUTNBA0003860 and ICUTNBA0004864 from
+ UTN FRBA.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "items/references"
+options "cinc"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -5mm*
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{correspondence}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Augusto Santini, asantini@est.frba.utn.edu.ar
+\begin_inset Newline newline
+\end_inset
+
+Medrano 951 (C1179AAQ) C.A.B.A., Argentina 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{correspondence}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
