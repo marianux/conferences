@@ -36,3 +36,7 @@ CINC18 AIPD\.zip
 ecg-publications/
 
 db_referencias/refs\.bib\.bak
+
+*.doc#
+
+*.lyx~
