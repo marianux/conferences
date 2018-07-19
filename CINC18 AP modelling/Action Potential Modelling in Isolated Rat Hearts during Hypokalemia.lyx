@@ -224,21 +224,41 @@ on have low potassium levels.
  below 2.7 mEq/L.
  However, in other population like in dialyzed chronic kidney disease patients,
  potassium level lower than 4 mEq/L is a risk factor for arrhythmic events.
- During and after dialysis are very vulnerable points in arrhythmogenesis.(1,2)
+ It was reported that arrhythmias are more likely to start developing during
+ and after dialysis 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ichikawa1997,kovesdy2007serum"
+literal "false"
+
+\end_inset
+
+.
  During advance chronic kidney disease, potassium slowly accumulates in
  the intracellular and the extracellular space.
- This explains the tolerance of these patients to hyperkalemia.
  During dialysis, potassium can be removed from the body at faster rates
  producing relative hypokalemia, which could be critical in excitable tissues
  like the heart.
  Since we performed experiments in healthy rat hearts, we acutely reduced
- the potassium level to 1 mEq/L which, despite un-physiological level, match
- a ratio between extracellular and intracellular space similar to the one
- described in dialyzed patients that developed arrhythmic episodes.
- Acute low extracellular potassium exposure triggers arrhythmias due to
- lengthening in action potential duration, abnormal pacemaker activity,
- the presence of early and delayed afterdepolarizations and decrease in
- conduction velocity due to uncoupling of cell-to-cell communication.
+ the potassium level to 1 mEq/L which match a ratio between extracellular
+ and intracellular space similar to the one described in dialyzed patients
+ that developed arrhythmic episodes 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Diez2013"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Acute low extracellular potassium exposure triggers arrhythmias due to lengtheni
+ng in action potential duration, abnormal pacemaker activity, the presence
+ of early and delayed afterdepolarizations and decrease in conduction velocity
+ due to uncoupling of cell-to-cell communication.
  The latter effect also contributes to the persistence of the reentrant
  circuits involved in the pathogenesis of arrhythmias.
  Melatonin protects against several cardiovascular diseases and exhibits
@@ -259,13 +279,98 @@ as by other mechanisms like preventing changes in the action potential duration.
  activity and by preserving gap junction channels function and distribution.
 \end_layout
 
+\begin_layout Standard
+The elevated heart rates developed by rodents, together with the morphological
+ changes induced by changes in the potassium concentration are very challenging
+ for automatic algorithms.
+ In order detect heartbeats and perform measurements in ECG waves and action
+ potential recordings, a semiautomatic approach was used.
+ The objective of this work was to develop the semiautomatic methods for
+ detecting heartbeats and model the action potentials recorded in rats hearts
+ during hypokalemia.
+\end_layout
+
 \begin_layout Section
 Material and methods
 \end_layout
 
 \begin_layout Standard
-The performance of the algorithm was evaluated in a data corpus consisting
- in two evaluation sets.
+Isolated rat hearts underwent low potassium perfusion (1 mEq/L) in 4 groups:
+ 1) Mel, 100 µM melatonin; 2) Luz, luzindole 5 µM a melatonin receptor blocker;
+ 3) Mel+Luz melatonin+luzindole; or 4) Control.
+ All procedures were approved by the local Institutional Animal Care and
+ Use Committee which is in agreement with the Guide for Care and Use of
+ Laboratory Animals (National Academy Press, 1996).
+ Rats were housed in metal cages under conditions of controlled temperature
+ and humidity, with food and water 
+\emph on
+ad libitum
+\emph default
+ and exposed to a cycle of 12 hours of light and 12 hours of darkness.
+ In five hearts per group, we registered simultaneously a far field pseudo
+ ECG signal together with the epicardial transmembrane potential using a
+ custom made microelectrode amplifier.
+ Both signals were digitized at a sampling rate of 20 kHz for posterior
+ digital processing and analysis.
+ The analysis consisted in a) detecting heartbeats, b) correcting/validating
+ detections, c) measure parameters in signal averaged AP (SAAP), and finally
+ d) validate time-series AP measurements for posterior statistical analysis.
+ 
+\end_layout
+
+\begin_layout Standard
+The detections of heartbeats was performed in the ECG signal with an 
+\emph on
+ad-hoc
+\emph default
+ algorithm described and analyzed in more detail by the same authors in
+ this conference.
+ This algorithm perform a two-step detection based on two restrictions:
+ temporal duration of an arbitrary disruptive pattern and minimum time between
+ two consecutive patterns.
+ The algorithm makes a first detection attempt with a matched filter approach
+ and a synthetic pattern for a rough detection, and a final refinement step
+ where the synthetic pattern is replaced with the more promising patterns
+ found.
+ This algorithm provided great automatic performance, and an additional
+ feature: if the algorithm did not provide acceptable results, an expert
+ user can refine the pattern in order to correct detections in a semiautomatic
+ mode.
+ The details of the algorithm can also be found in an open source implementation
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ecg-kit_paper,ecg-kit-web"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The detection of heartbeats allow us to calculate an SAAP by synchronous
+ averaging from all AP's found in a XX seconds window, enhancing the SNR
+ of the resulting signal 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PLbook"
+literal "false"
+
+\end_inset
+
+.
+ The SAAP was modeled by morphological and temporal features, such as the
+ action potential amplitude, resting potential, action potential duration
+ at 50% and 90% of repolarization, and the maximum rate of depolarization.
+ The activation delay between the start of the QRS complex in the ECG and
+ the start of the AP was also calculated.
+ FIGURA XX
+\end_layout
+
+\begin_layout Standard
+In this work, the performance of the algorithm was evaluated in a data corpus
+ consisting in two evaluation sets.
  The first evaluation set consists in 178 human ECG recordings from 12 publicly
  available databases 
 \begin_inset CommandInset citation
@@ -1887,6 +1992,14 @@ Results
 \end_layout
 
 \begin_layout Standard
+Based in the pictures that you have plus the info from LUZ and MEL+LUZ Action
+ potentials lengthened during LowK and also the fase 0 of the action potentials
+ were delayed in respect to the beginning of the QRS complex but without
+ in the amplitude or the dV/dtmax which suggest that Na channels were not
+ affected.
+\end_layout
+
+\begin_layout Standard
 The results obtained for both evaluation sets are summarized in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2767,180 +2880,92 @@ Discussion and conclusions
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/hist_final.pdf
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Case-of-failure"
-
-\end_inset
-
-Case of failure: Bad threshold calculation.
- Example taken from recording 0116 from edb database.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In this work we evaluated an algorithm for pseudo periodic patterns.
- As explained above, the pattern description was made with two time parameters:
- the pattern duration (
-\begin_inset Formula $N$
-\end_inset
-
-) and the minimum time between successive patterns (
-\begin_inset Formula $m_{0}$
-\end_inset
-
-).
- This representation achieved promising results for the detection of QRS
- complexes in human and rodent recordings.
- The evaluation set includes recordings from 12 human ECG databases publicly
- available 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "PhysioNet,THEW"
-literal "true"
-
-\end_inset
-
-, as shown in Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Databases"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
- Another set of 17 pseudo ECG recordings of explanted rodent hearts 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "CitaRata"
-literal "false"
-
-\end_inset
-
- was used to evaluate the generality of the pattern description.
-\end_layout
-
-\begin_layout Standard
-The results presented in Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:PerformanceFirstSetBadCases"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- show that the algorithm achieved a very good overall performance over a
- wide set of recordings, obtaining a 
-\begin_inset Formula $S=100$
-\end_inset
-
- and 
-\begin_inset Formula $P=99.9$
-\end_inset
-
- in the whole human set.
- In the same table, the worst cases were selected in order to visualize
- where the algorithm requires further improvement, despite the fact that
- the median performances are very promising.
- We observed in those cases that the algorithm failed calculating the threshold
- 
-\begin_inset Formula $t_{b}$
-\end_inset
-
-, as is shown in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Case-of-failure"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-, and where a proper threshold should be located.
- During real-life use of the algorithm, these kind of errors are easy-to-correct
-, since the value of 
-\begin_inset Formula $t_{b}$
-\end_inset
-
- could be corrected by expert assistance, if available.
+In this study, we showed that acute administration of melatonin during low
+ potassium perfusion protects against VF.
+ This effect was mediated by melatonin receptors activation and by the preventio
+n of Cx43 dephosphorylation and lateralization.
+ Electrophysiological changes induced by hypokalemia have been documented
+ in humans and in experimental models.
+ Severe hypokalemia induces changes in ventricular repolarization like lengtheni
+ng of the QT interval, decreased amplitude and broadening of the T waves,
+ prominent U waves, T and U wave fusion associated to an increased risk
+ of arrhythmic death.
+ Here we confirmed the QT interval lengthening which correlated with an
+ increase in the action potential duration… Melatonin did not prevent the
+ changes related to ventricular repolarization induced by low potassium.
+ Hypokalemia also induces conduction abnormalities like increased P wave
+ amplitude and duration, a slight prolongation of the PR interval, atrioventricu
+lar block, increased QRS duration and cardiac arrest.
+ We found electrocardiographic conduction disturbance in our experiments
+ regardless melatonin presence.
+ Hypokalemia decreases Na-K ATPase activity leading to intracellular Ca2+
+ overload and this facilitates the development of delayed afterdepolarizations
+ via the transient inward current.
+ Delayed afterdepolarizations are considered to be potential triggers for
+ arrhythmia because they may initiate an action potential in isolated cells.
+ However, it is unlikely that an action potential can be initiated in the
+ tissue due to a source- sink mismatch.
+ To overcome the mismatch, there must be a reduced sink via uncoupling or
+ an increased source via delayed afterdepolarizations synchronization between
+ adjacent cells.
+ Both situations could be assumed based on the results of the anisotropic
+ conduction studies and the immunofluorescence images.
+ Connexins lateralization has been detected in chronic atrial fibrillation,
+ cardiac hypertrophy, heart failure and after myocardial infarction.
+ An increase in the fraction of lateral connexins forming functional channels
+ enhances transverse conduction velocity and contributes to arrhythmogenic
+ impulse propagation.
+ Gap junction lateralization with a high side-to-side coupling of cardiomyocytes
+ may favor conduction block due to source-sink mismatches.
+ An unidirectional block can lead to reentry circles resulting in ventricular
+ tachycardia or fibrillation.
+ The acute lateralization here described should be considered as another
+ arrhythmogenic factor… melatonin prevented lateralization Moreover, other
+ antiarrhythmic agents like metoprolol led to a lower degree of lateralization
+ and lower transverse conduction velocity.
+ Cx43 has multiple phosphorylation sites that could lead to enhanced coupling
+ or uncoupling regarding to the target residue, but dephosphorylation is
+ clearly associated with uncoupling.
+ It remains unknown whether Cx43 dephosphorylation during low potassium
+ is the result of increased phosphatase and/or decreased kinase activity
+ and which are the targets of melatonin that prevented dephosphorylation.
+ Cx43 dephosphorylation was previously attributed to decreased intracellular
+ ATP concentration and decreased thermodynamic driving force for phosphorylation.
+ Interestingly, our histochemical results indicate a patchy moderate decrease
+ in ATP sources that coincides with the increase in unphosphorylated Cx43.
+ Dramatic decreases in gap junctional communication and concomitant loss
+ of phosphorylated Cx43 and accumulation of unphosphorylated Cx43 have been
+ previously reported in other experimental models but the relationship between
+ changes in dephosphorylation and uncoupling was not directly defined in
+ this study.
+ Our results could be of relevance mainly in those situations in which acute
+ hypokalemia can be anticipated like in dialysis.
+ The dialysis process, even with all the improvements in the last years,
+ still has to deal with acute electrolyte imbalance.
+ Important increases in QT interval and QT dispersion were found post-dialysis.
+ We propose that melatonin could render the heart more resistant to arrhythmic
+ events triggered by rapid changes in electrolyte-plasma concentrations
+ regardless the lack of effects on the ECG.
+ Additionally, those patients also suffer from disturbances in circadian
+ rhythms and low melatonin levels.
+ However, clinical translations of our results should be done with caution
+ mainly because we use a high dose of melatonin administered directly to
+ the heart.
+ Based on the pharmacokinetic of melatonin in humans, to achieve a similar
+ concentration in plasma you should administer more than 10 times the higher
+ intravenous dose tested till know [Andersen 2016] Future studies will be
+ required to define the specific amino acid residues of Cx43 involved in
+ the antiarrhythmic effects of melatonin.
+ Microelectrode recordings were confined to the epicardium, and we cannot
+ exclude the possibility that arrhythmias resulting from EADs, delayed afterdepo
+larizations, or other mechanisms arose from deeper levels.
+ Nevertheless, we did directly record triggered activity from epicardial
+ myocytes
 \end_layout
 
 \begin_layout Standard
-The results in the rodent set were not as good as in the human set, in Table
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:PerformanceFirstSetBadCases"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- the median performance show an slight decrease in 
-\begin_inset Formula $S=97.1$
-\end_inset
-
- and a more important decrease in 
-\begin_inset Formula $P=79.1$
-\end_inset
-
-.
- This performance drop could be explained in first place by the severe changes
- in morphology and rhythm observed in rodent recordings, as shown in Figure
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:scores"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
- Another explanation can be the experimental setup, i.e.
- explanted hearts subject to severe changes in the potassium concentration
- to induce ventricular fibrillation.
- It is certainly a difficult scenario for any automatic algorithm, as said
- above when comparing the performances with other public algorithms, where
- the proposed algorithm is the best performing.
- 
+It has been reported that hypokalemia induces removal of Kr channels from
+ the surface membrane.
 \end_layout
 
 \begin_layout Standard
