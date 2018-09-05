@@ -505,7 +505,7 @@ Based in the panels in Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Heart-rhythm,-PR"
+reference "fig:StabVsLowK"
 plural "false"
 caps "false"
 noprefix "false"
@@ -513,9 +513,9 @@ noprefix "false"
 \end_inset
 
  plus the info from LUZ and MEL+LUZ Action potentials lengthened during
- LowK and also the fase 0 of the action potentials were delayed in respect
- to the beginning of the QRS complex but without in the amplitude or the
- dV/dtmax which suggest that Na channels were not affected.
+ hypokalemia and also the fase 0 of the action potentials were delayed in
+ respect to the beginning of the QRS complex but without in the amplitude
+ or the dV/dtmax which suggest that Na channels were not affected.
 \end_layout
 
 \begin_layout Standard
@@ -531,6 +531,19 @@ As expected during hypokalemia, QT interval lengthened in all the groups.
  group (in ms: Control 13.2 ± 1.7 to 18.3 ± 1.7***; Mel 12.7 ± 2.6 to 14.4 ± 2.1;
  Mel+Luz 12.1 ± 2.0 to 15.2 ± 3.2; and Luz 11.2 ± 1.7 to 15.4 ± 1.5).
  * P<0.05, ** P<0.01, and *** P<0.001 by ANOVA.
+ The proportion of hearts within each group that underwent ventricular fibrillat
+ion was only reduced for the melatonin treatment, as is shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:VfibIncidence"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -543,7 +556,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/results.svg
-	lyxscale 15
+	lyxscale 30
 	width 100col%
 	groupId plots
 
@@ -558,11 +571,53 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Heart-rhythm,-PR"
+name "fig:StabVsLowK"
 
 \end_inset
 
-Heart rhythm, PR and QT intervals for the studied groups.
+Comparison between stabilization and hypokalemia conditions, and between
+ melatonin and control groups.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/results1.svg
+	lyxscale 30
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:VfibIncidence"
+
+\end_inset
+
+Proportion of hearts within each group that underwent ventricular fibrillation.
 \end_layout
 
 \end_inset
@@ -580,109 +635,83 @@ Discussion and conclusions
 \end_layout
 
 \begin_layout Standard
-In this study, we showed that acute administration of melatonin during low
- potassium perfusion protects against VF.
- This effect was mediated by melatonin receptors activation and by the preventio
-n of Cx43 dephosphorylation and lateralization.
- Electrophysiological changes induced by hypokalemia have been documented
- in humans and in experimental models.
- Severe hypokalemia induces changes in ventricular repolarization like lengtheni
-ng of the QT interval, decreased amplitude and broadening of the T waves,
- prominent U waves, T and U wave fusion associated to an increased risk
- of arrhythmic death.
- Here we confirmed the QT interval lengthening which correlated with an
- increase in the action potential duration… Melatonin did not prevent the
- changes related to ventricular repolarization induced by low potassium.
- Hypokalemia also induces conduction abnormalities like increased P wave
- amplitude and duration, a slight prolongation of the PR interval, atrioventricu
-lar block, increased QRS duration and cardiac arrest.
- We found electrocardiographic conduction disturbance in our experiments
- regardless melatonin presence.
- Hypokalemia decreases Na-K ATPase activity leading to intracellular Ca2+
- overload and this facilitates the development of delayed afterdepolarizations
- via the transient inward current.
- Delayed afterdepolarizations are considered to be potential triggers for
- arrhythmia because they may initiate an action potential in isolated cells.
- However, it is unlikely that an action potential can be initiated in the
- tissue due to a source- sink mismatch.
- To overcome the mismatch, there must be a reduced sink via uncoupling or
- an increased source via delayed afterdepolarizations synchronization between
- adjacent cells.
- Both situations could be assumed based on the results of the anisotropic
- conduction studies and the immunofluorescence images.
- Connexins lateralization has been detected in chronic atrial fibrillation,
- cardiac hypertrophy, heart failure and after myocardial infarction.
- An increase in the fraction of lateral connexins forming functional channels
- enhances transverse conduction velocity and contributes to arrhythmogenic
- impulse propagation.
- Gap junction lateralization with a high side-to-side coupling of cardiomyocytes
- may favor conduction block due to source-sink mismatches.
- An unidirectional block can lead to reentry circles resulting in ventricular
- tachycardia or fibrillation.
- The acute lateralization here described should be considered as another
- arrhythmogenic factor… melatonin prevented lateralization Moreover, other
- antiarrhythmic agents like metoprolol led to a lower degree of lateralization
- and lower transverse conduction velocity.
- Cx43 has multiple phosphorylation sites that could lead to enhanced coupling
- or uncoupling regarding to the target residue, but dephosphorylation is
- clearly associated with uncoupling.
- It remains unknown whether Cx43 dephosphorylation during low potassium
- is the result of increased phosphatase and/or decreased kinase activity
- and which are the targets of melatonin that prevented dephosphorylation.
- Cx43 dephosphorylation was previously attributed to decreased intracellular
- ATP concentration and decreased thermodynamic driving force for phosphorylation.
- Interestingly, our histochemical results indicate a patchy moderate decrease
- in ATP sources that coincides with the increase in unphosphorylated Cx43.
- Dramatic decreases in gap junctional communication and concomitant loss
- of phosphorylated Cx43 and accumulation of unphosphorylated Cx43 have been
- previously reported in other experimental models but the relationship between
- changes in dephosphorylation and uncoupling was not directly defined in
- this study.
- Our results could be of relevance mainly in those situations in which acute
- hypokalemia can be anticipated like in dialysis.
- The dialysis process, even with all the improvements in the last years,
- still has to deal with acute electrolyte imbalance.
- Important increases in QT interval and QT dispersion were found post-dialysis.
- We propose that melatonin could render the heart more resistant to arrhythmic
- events triggered by rapid changes in electrolyte-plasma concentrations
- regardless the lack of effects on the ECG.
- Additionally, those patients also suffer from disturbances in circadian
- rhythms and low melatonin levels.
- However, clinical translations of our results should be done with caution
- mainly because we use a high dose of melatonin administered directly to
- the heart.
- Based on the pharmacokinetic of melatonin in humans, to achieve a similar
- concentration in plasma you should administer more than 10 times the higher
- intravenous dose tested till know [Andersen 2016] Future studies will be
- required to define the specific amino acid residues of Cx43 involved in
- the antiarrhythmic effects of melatonin.
- Microelectrode recordings were confined to the epicardium, and we cannot
- exclude the possibility that arrhythmias resulting from EADs, delayed afterdepo
-larizations, or other mechanisms arose from deeper levels.
- Nevertheless, we did directly record triggered activity from epicardial
- myocytes
+In this study, we developed a semiautomatic method for detecting and modeling
+ amplitude and intervals among ECG and transmembrane potentials in rat cardiomyo
+cytes.
+ The algorithm is based on an automatic algorithm for detecting arbitrary
+ disruptive patterns, commonly found in cardiovascular signals.
+ The design objective of this method was to increase the analysis capacity
+ of cardiologists without technical knowledge in signal processing and data
+ analysis.
+ This first objective was achieved, however the algorithm has room for improveme
+nt, specially in improving the automatic performance.
+ We will address this issue in subsequent works, at the same time that the
+ signal acquisition will be systematized.
 \end_layout
 
 \begin_layout Standard
-It has been reported that hypokalemia induces removal of Kr channels from
- the surface membrane.
-\end_layout
-
-\begin_layout Standard
-The implementation of the proposed algorithm, with more detailed results
- can be found in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "augusto_repo"
-literal "false"
+The experimentation performed in this work investigated the antiarrhythmic
+ effect of melatonin, and its relation with 1) the action potential morphology
+ and 2) the propagation of the electrical impulses.
+ The control group exhibited an expected behavior with respect to 1), since
+ APD lengthened during 
+\emph on
+lowk
+\emph default
+ condition.
+ With respect to the propagation of the electrical impulse, both the action
+ potential delay and the QRS width, surrogates of the conduction velocity
+ through the tissue, also exhibited an increase during 
+\emph on
+lowk
+\emph default
+.
+ In contrast, melatonin prevented all measurements to increase, suggesting
+ that the conduction pathway was preserved.
+ As the resting membrane potential was decreased, consequence of the 
+\emph on
+lowk
+\emph default
+ condition, and therefore the sodium current increased, the results may
+ suggest that the pathway is preserved by the connexins or gap junctions.
+ When analyzing the luzindole group, we see a behavior similar than the
+ control group, showing no antiarrhythmic effect at all.
+ However, when luzindole and melatonin are simultaneously used, the net
+ effect of melatonin reduces as was espected (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:StabVsLowK"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
- for comparison.
- Despite the limitations described, the algorithm achieved promising results
- with only two physiologically-meaningful parameters, in a broad set of
- ECG recordings of very different nature, with the additional capability
- of further adaptation provided by expert assistance.
+).
+ These results were also confirmed by the proportion of ventricular fibrillation
+s occurred for each group.
+ The melatonin group was the only group with a significant decrease, as
+ shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:VfibIncidence"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The results presented in this work suggest that the methodology was useful
+ for analyzing the behavior of electrophysiological signals during experimentati
+on.
+ Further improvements in the automaticity of the methodology will allow
+ further experimentation to contrast the results presented in this work.
 \end_layout
 
 \begin_layout Section*
@@ -727,7 +756,7 @@ begin{correspondence}
 \end_layout
 
 \begin_layout Standard
-Augusto Santini, asantini@est.frba.utn.edu.ar
+Mariano Llamedo, llamedom@frba.utn.edu.ar
 \begin_inset Newline newline
 \end_inset
 
