@@ -1,0 +1,133 @@
+% This file was created with JabRef 2.10.
+% Encoding: ISO8859_1
+
+
+@Electronic{THEW,
+  Title                    = {The Telemetric and Holter {ECG} Warehouse Initiative {THEW}},
+  Author                   = {Couderc, J P},
+  Url                      = {thew-project.org},
+
+  Owner                    = {llamedom},
+  Timestamp                = {2010.12.02}
+}
+
+@Article{ecg-kit_paper,
+  Title                    = {{ecg-kit a Matlab Toolbox for Cardiovascular Signal Processing}},
+  Author                   = {Demski, Andr{\'{e}}s Julio and Llamedo, Mariano},
+  Journal                  = {Journal of Open Research Software},
+  Year                     = {2016},
+  Number                   = {1},
+  Pages                    = {2--5},
+  Volume                   = {4},
+
+  Doi                      = {http://doi.org/10.5334/jors.86},
+  File                     = {:D$\backslash$:/Downloads/86-989-1-PB.pdf:pdf},
+  Owner                    = {mllamedo},
+  Timestamp                = {2018.04.09}
+}
+
+@Article{CitaRata,
+  Title                    = {Melatonin, given at the time of reperfusion, prevents ventricular arrhythmias in isolated hearts from fructose fed rats and spontaneously hypertensive rats},
+  Author                   = {Emiliano Ra{\´u}l Diez and others},
+  Journal                  = {Journal of Pineal Research},
+  Number                   = {2},
+  Pages                    = {166-173},
+  Volume                   = {55},
+
+  Abstract                 = {Abstract Melatonin reduces reperfusion arrhythmias when administered before coronary occlusion, but in the clinical context of acute coronary syndromes, most of the therapies are administered at the time of reperfusion. Patients frequently have physiological modifications that can reduce the response to therapeutic interventions. This work determined whether acute melatonin administration starting at the moment of reperfusion protects against ventricular arrhythmias in Langendorff?perfused hearts isolated from fructose?fed rats (FFR), a dietary model of metabolic syndrome, and from spontaneous hypertensive rats (SHR). In both experimental models, we confirmed metabolic alterations, a reduction in myocardial total antioxidant capacity and an increase in arterial pressure and NADPH oxidase activity, and in FFR, we also found a decrease in eNOS activity. Melatonin (50 ?m) initiated at reperfusion after 15?min regional ischemia reduced the incidence of ventricular fibrillation from 83\% to 33\% for the WKY strain, from 92\% to 25\% in FFR, and from 100\% to 33\% in SHR (P = 0.0361, P = 0.0028, P = 0.0013, respectively, by Fisher's exact test, n = 12 each). Although, ventricular tachycardia incidence was high at the beginning of reperfusion, the severity of the arrhythmias progressively declined in melatonin?treated hearts. Melatonin induced a shortening of the action potential duration at the beginning of reperfusion and in the SHR group also a faster recovery of action potential amplitude. We conclude that melatonin protects against ventricular fibrillation when administered at reperfusion, and these effects are maintained in hearts from rats exposed to major cardiovascular risk factors. These results further support the ongoing translation to clinical trials of this agent.},
+  Doi                      = {10.1111/jpi.12059},
+  Eprint                   = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/jpi.12059},
+  Keywords                 = {arrhythmias, melatonin, metabolic syndrome, reperfusion injury, spontaneously hypertensive rats}
+}
+
+@Article{elgendiQRSdreview,
+  Title                    = {Revisiting QRS Detection Methodologies for Portable, Wearable, Battery-Operated, and Wireless ECG Systems},
+  Author                   = {Elgendi, Mohamed and others},
+  Journal                  = {PLOS ONE},
+  Year                     = {2014},
+
+  Month                    = {01},
+  Number                   = {1},
+  Pages                    = {1-18},
+  Volume                   = {9},
+
+  Abstract                 = {Cardiovascular diseases are the number one cause of death worldwide. Currently, portable battery-operated systems such as mobile phones with wireless ECG sensors have the potential to be used in continuous cardiac function assessment that can be easily integrated into daily life. These portable point-of-care diagnostic systems can therefore help unveil and treat cardiovascular diseases. The basis for ECG analysis is a robust detection of the prominent QRS complex, as well as other ECG signal characteristics. However, it is not clear from the literature which ECG analysis algorithms are suited for an implementation on a mobile device. We investigate current QRS detection algorithms based on three assessment criteria: 1) robustness to noise, 2) parameter choice, and 3) numerical efficiency, in order to target a universal fast-robust detector. Furthermore, existing QRS detection algorithms may provide an acceptable solution only on small segments of ECG signals, within a certain amplitude range, or amid particular types of arrhythmia and/or noise. These issues are discussed in the context of a comparison with the most conventional algorithms, followed by future recommendations for developing reliable QRS detection schemes suitable for implementation on battery-operated mobile devices.},
+  Doi                      = {10.1371/journal.pone.0084018},
+  Owner                    = {mllamedo},
+  Publisher                = {Public Library of Science},
+  Timestamp                = {2018.03.06}
+}
+
+@Article{PhysioNet,
+  Title                    = {{PhysioBank, PhysioToolkit, and PhysioNet}: Components of a New Research Resource for Complex Physiologic Signals},
+  Author                   = {Goldberger, Ary L. and others},
+  Journal                  = {Circulation},
+  Year                     = {2000},
+  Number                   = {23},
+  Pages                    = {e215--e220},
+  Volume                   = {101},
+
+  Owner                    = {mllamedo},
+  Timestamp                = {2018.04.09}
+}
+
+@Article{Woody1969,
+  Title                    = {Use of an adaptive filter to characterize signal-noise relationships},
+  Author                   = {Harris, Eugene K and Woody, Charles D},
+  Journal                  = {Computers and Biomedical Research},
+  Year                     = {1969},
+  Number                   = {3},
+  Pages                    = {242--273},
+  Volume                   = {2},
+
+  Owner                    = {mllamedo},
+  Publisher                = {Elsevier},
+  Timestamp                = {2018.04.09}
+}
+
+@Electronic{ecg-kit-web,
+  Title                    = {ecg-kit: A Matlab toolbox for cardiovascular signal processing},
+  Author                   = {Mariano Llamedo},
+  Month                    = {5},
+  Url                      = {http://marianux.github.io/ecg-kit/},
+  Year                     = {2015},
+
+  Owner                    = {Mariano},
+  Timestamp                = {2015.08.27}
+}
+
+@Article{thiRef,
+  Title                    = {Threshold-Independent QRS Detection Using the Dynamic Plosion Index},
+  Author                   = {A. G. Ramakrishnan and A. P. Prathosh and T. V. Ananthapadmanabha},
+  Journal                  = {IEEE Signal Processing Letters},
+  Year                     = {2014},
+
+  Month                    = {May},
+  Number                   = {5},
+  Pages                    = {554-558},
+  Volume                   = {21},
+
+  Doi                      = {10.1109/LSP.2014.2308591},
+  ISSN                     = {1070-9908},
+  Keywords                 = {electrocardiography;high-pass filters;medical signal detection;medical signal processing;speech processing;ECG analysis;ECG signal preprocessing;MIT-BIll database;baseline wandering;decision logic;dynamic plosion index;electrocardiogram;epoch detection;half-wave rectification;high-pass filtering;integrated linear prediction residual;nonlinear temporal feature;signal structures;standard metrics;threshold-independent QRS detection;transient detection;voiced speech;Algorithm design and analysis;Electrocardiography;Heuristic algorithms;Indexes;Signal processing algorithms;Speech;Transient analysis;DPI algorithm;ECG signal;GCI detection;QRS detection;dynamic plosion index;threshold free}
+}
+
+@Book{PLbook,
+  Title                    = {Bioelectrical Signal Processing in Cardiac and Neurological Applications},
+  Author                   = {S{\"o}rnmo, L. and Laguna, P.},
+  Publisher                = {Elsevier},
+  Year                     = {2005},
+
+  ISBN                     = {0-12-437552-9},
+  Owner                    = {mllamedo},
+  Timestamp                = {2018.04.09}
+}
+
+@Electronic{augusto_repo,
+  Title                    = {Implementation of the proposed algorithm.},
+  Url                      = {https://github.com/ajs93/aip.git},
+
+  Owner                    = {mllamedo},
+  Timestamp                = {2018.04.15}
+}
+

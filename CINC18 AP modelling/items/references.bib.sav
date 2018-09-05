@@ -1,0 +1,75 @@
+% Encoding: ISO-8859-1
+
+@Article{ecg-kit_paper,
+  Title                    = {{ecg-kit a Matlab Toolbox for Cardiovascular Signal Processing}},
+  Author                   = {Demski, Andr{\'{e}}s Julio and Llamedo, Mariano},
+  Journal                  = {Journal of Open Research Software},
+  Year                     = {2016},
+  Number                   = {1},
+  Pages                    = {2--5},
+  Volume                   = {4},
+
+  Doi                      = {http://doi.org/10.5334/jors.86},
+  File                     = {:D$\backslash$:/Downloads/86-989-1-PB.pdf:pdf},
+  Owner                    = {mllamedo},
+  Timestamp                = {2018.04.09}
+}
+
+@Article{CitaRata,
+  Title                    = {Melatonin, given at the time of reperfusion, prevents ventricular arrhythmias in isolated hearts from fructose fed rats and spontaneously hypertensive rats},
+  Author                   = {Emiliano Ra{\´u}l Diez and others},
+  Journal                  = {Journal of Pineal Research},
+  Number                   = {2},
+  Pages                    = {166-173},
+  Volume                   = {55},
+
+  Abstract                 = {Abstract Melatonin reduces reperfusion arrhythmias when administered before coronary occlusion, but in the clinical context of acute coronary syndromes, most of the therapies are administered at the time of reperfusion. Patients frequently have physiological modifications that can reduce the response to therapeutic interventions. This work determined whether acute melatonin administration starting at the moment of reperfusion protects against ventricular arrhythmias in Langendorff?perfused hearts isolated from fructose?fed rats (FFR), a dietary model of metabolic syndrome, and from spontaneous hypertensive rats (SHR). In both experimental models, we confirmed metabolic alterations, a reduction in myocardial total antioxidant capacity and an increase in arterial pressure and NADPH oxidase activity, and in FFR, we also found a decrease in eNOS activity. Melatonin (50 ?m) initiated at reperfusion after 15?min regional ischemia reduced the incidence of ventricular fibrillation from 83\% to 33\% for the WKY strain, from 92\% to 25\% in FFR, and from 100\% to 33\% in SHR (P = 0.0361, P = 0.0028, P = 0.0013, respectively, by Fisher's exact test, n = 12 each). Although, ventricular tachycardia incidence was high at the beginning of reperfusion, the severity of the arrhythmias progressively declined in melatonin?treated hearts. Melatonin induced a shortening of the action potential duration at the beginning of reperfusion and in the SHR group also a faster recovery of action potential amplitude. We conclude that melatonin protects against ventricular fibrillation when administered at reperfusion, and these effects are maintained in hearts from rats exposed to major cardiovascular risk factors. These results further support the ongoing translation to clinical trials of this agent.},
+  Doi                      = {10.1111/jpi.12059},
+  Eprint                   = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/jpi.12059},
+  Keywords                 = {arrhythmias, melatonin, metabolic syndrome, reperfusion injury, spontaneously hypertensive rats}
+}
+
+@Article{PhysioNet,
+  Title                    = {{PhysioBank, PhysioToolkit, and PhysioNet}: Components of a New Research Resource for Complex Physiologic Signals},
+  Author                   = {Goldberger, Ary L. and others},
+  Journal                  = {Circulation},
+  Year                     = {2000},
+  Number                   = {23},
+  Pages                    = {e215--e220},
+  Volume                   = {101},
+
+  Owner                    = {mllamedo},
+  Timestamp                = {2018.04.09}
+}
+
+@Electronic{ecg-kit-web,
+  Title                    = {ecg-kit: A Matlab toolbox for cardiovascular signal processing},
+  Author                   = {Mariano Llamedo},
+  Month                    = {5},
+  Url                      = {http://marianux.github.io/ecg-kit/},
+  Year                     = {2015},
+
+  Owner                    = {Mariano},
+  Timestamp                = {2015.08.27}
+}
+
+@Book{PLbook,
+  Title                    = {Bioelectrical Signal Processing in Cardiac and Neurological Applications},
+  Author                   = {S{\"o}rnmo, L. and Laguna, P.},
+  Publisher                = {Elsevier},
+  Year                     = {2005},
+
+  ISBN                     = {0-12-437552-9},
+  Owner                    = {mllamedo},
+  Timestamp                = {2018.04.09}
+}
+
+@Electronic{augusto_repo,
+  Title                    = {Implementation of the proposed algorithm.},
+  Url                      = {https://github.com/ajs93/aip.git},
+
+  Owner                    = {mllamedo},
+  Timestamp                = {2018.04.15}
+}
+
+@Comment{jabref-meta: databaseType:biblatex;}

@@ -542,33 +542,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /home/mariano/mariano/research/conferences/CINC18 AP modelling/abstract/hr.png
-	lyxscale 15
-	width 100col%
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename /home/mariano/mariano/research/conferences/CINC18 AP modelling/abstract/PR.png
-	lyxscale 15
-	width 100col%
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename /home/mariano/mariano/research/conferences/CINC18 AP modelling/abstract/qt.png
+	filename images/results.svg
 	lyxscale 15
 	width 100col%
 	groupId plots
