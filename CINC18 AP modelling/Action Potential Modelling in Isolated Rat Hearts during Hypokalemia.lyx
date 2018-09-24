@@ -654,30 +654,30 @@ The experimentation performed in this work investigated the antiarrhythmic
  effect of melatonin, and its relation with 1) the action potential morphology
  and 2) the propagation of the electrical impulses.
  The control group exhibited an expected behavior with respect to 1), since
- APD lengthened during 
+ APD lengthened during hypokalemia
 \emph on
-lowk
+ (lowK)
 \emph default
  condition.
  With respect to the propagation of the electrical impulse, both the action
  potential delay and the QRS width, surrogates of the conduction velocity
- through the tissue, also exhibited an increase during 
+ through the tissue, also increased during 
 \emph on
-lowk
+lowK
 \emph default
 .
- In contrast, melatonin prevented all measurements to increase, suggesting
- that the conduction pathway was preserved.
+ In contrast, melatonin prevented all indexes to increase, suggesting that
+ the conduction pathway was preserved.
  As the resting membrane potential was decreased, consequence of the 
 \emph on
-lowk
+lowK
 \emph default
  condition, and therefore the sodium current increased, the results may
  suggest that the pathway is preserved by the connexins or gap junctions.
  When analyzing the luzindole group, we see a behavior similar than the
  control group, showing no antiarrhythmic effect at all.
  However, when luzindole and melatonin are simultaneously used, the net
- effect of melatonin reduces as was espected (Fig.
+ effect of melatonin was reduced as expected (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -719,8 +719,8 @@ Acknowledgments
 \end_layout
 
 \begin_layout Standard
-This work was supported by projects ASUTNBA0003860 and ICUTNBA0004864 from
- UTN FRBA.
+This work was supported by projects ASUTNBA0003860, ICUTNBA0004864 and ICUTNBA00
+04887 from UTN FRBA and J045 from SECTyP-UNCuyo.
 \end_layout
 
 \begin_layout Standard
